@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>BackToScene</title>
+    <link rel="icon" type="image/png" href="icons/icon48.png" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9fafb;
+        color: #333;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+      }
+
+      label,
+      input[type="text"],
+      button {
+        font-size: 16px;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        padding: 8px 12px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      button {
+        padding: 8px 14px;
+        margin-left: 6px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      button:hover {
+        background-color: #1e40af;
+      }
+
+      ul#excludeList {
+        margin-top: 10px;
+        padding-left: 20px;
+        list-style-type: disc;
+      }
+
+      ul#excludeList li {
+        margin: 6px 0;
+      }
+
+      ul#excludeList li button {
+        margin-left: 10px;
+        background-color: #ef4444;
+      }
+
+      #clearAll {
+        background-color: #d97706;
+        margin-top: 20px;
+      }
+
+      table {
+        margin-top: 12px;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      thead {
+        background-color: #f1f5f9;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+      }
+
+      .video-link {
+        max-width: 240px;
+        word-break: break-all;
+        font-size: 14px;
+        color: #2563eb;
+      }
+
+      .video-link a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+
+      .video-link a:hover {
+        text-decoration: underline;
+      }
+
+      td button {
+        background-color: #ef4444;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎬 BackToScene Settings</h1>
+
+    <label>
+      <input type="checkbox" id="autoResume" />
+      Automatically resume videos (If unchecked, a popup will ask you to resume)
+    </label>
+
+    <h2>
+      ➕ Included Sites (If empty, all sites are included except those in the
+      Excluded Sites list)
+    </h2>
+    <div style="margin-bottom: 20px">
+      <input
+        type="text"
+        id="includeInput"
+        placeholder="Add site to include (e.g., vimeo.com)"
+      />
+      <button id="addInclude">Add</button>
+      <ul id="includeList"></ul>
+    </div>
+
+    <h2>❌ Excluded Sites</h2>
+    <div style="margin-bottom: 20px">
+      <input
+        type="text"
+        id="excludeInput"
+        placeholder="Add site to exclude (e.g., youtube.com)"
+      />
+      <button id="addExclude">Add</button>
+      <ul id="excludeList"></ul>
+    </div>
+
+    <button id="clearAll">🗑 Clear All Saved Times</button>
+
+    <h2>📼 Saved Videos</h2>
+    <table id="savedVideos">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Link</th>
+          <th>Time</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "BackToScene",
-  "version": "1.2",
+  "version": "1.2.1",
   "description": "Resume videos from where you left off.",
   "content_scripts": [],
   "permissions": ["tabs", "activeTab", "scripting", "storage", "<all_urls>"],

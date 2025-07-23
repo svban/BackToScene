@@ -5,7 +5,7 @@
   const {
     excludedSites = [],
     includedSites = [],
-    autoResume = false,
+    autoResume = true,
   } = await browser.storage.local.get(["excludedSites", "autoResume"]);
   const currentURL = location.href;
 

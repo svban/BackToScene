@@ -124,18 +124,17 @@
   }
 
   function setup(video) {
-    // Skip muted autoplaying videos without controls (usually ads or background)
-    if (
-      video.autoplay &&
-      video.muted &&
-      !video.controls &&
-      video.duration < 60 // most background loops are short
-    ) {
-      return;
-    }
-
+    // ✅ Skip videos that are likely NOT main content, like youtube search page
     if (video.dataset.hasResumer === "true") return;
     video.dataset.hasResumer = "true";
+    const isInvisible = video.offsetHeight < 50 || video.offsetWidth < 50;
+    const isTooShort = video.duration && video.duration < 30;
+    const isMutedNoControls = video.muted && !video.controls;
+    const isAdLike = video.autoplay && isMutedNoControls && isTooShort;
+    if (isInvisible || isAdLike) {
+      console.log("[BackToScene] Skipping background/ad video");
+      return;
+    }
 
     const key = getKey();
     browser.storage.local.get(key).then((res) => {

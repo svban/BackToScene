@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const addExclude = document.getElementById("addExclude");
   const excludeList = document.getElementById("excludeList");
   const autoResumeCheckbox = document.getElementById("autoResume");
-  const { excludedSites = [], autoResume = false } =
+  const { excludedSites = [], autoResume = true } =
     await browser.storage.local.get(["excludedSites", "autoResume"]);
   autoResumeCheckbox.checked = autoResume;
   function renderExclusions() {
